@@ -182,7 +182,7 @@ The workshop uses a real malaria surveillance dataset from the [Epi R Handbook](
 ## Workshop Instructors
 
 - **Billy Quilty** - billy.quilty@charite.de
-- **Stefan Flasche** - Charité Institute of Public Health (via workshop team)
+- **Stefan Flasche**
 
 ## License
 
