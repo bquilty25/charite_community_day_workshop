@@ -1,0 +1,28 @@
+# R specific
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# IDE files
+.DS_Store
+.vscode/
+.idea/
+
+# Quarto
+/.quarto/
+_site/
+_book/
+
+# Output files (optional - comment out if you want to track these)
+# *.html
+# *.pdf
+
+# Temporary files
+*~
+*.tmp
+*.bak
+
+docs/brief.md
+docs/materials_plan.md

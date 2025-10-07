@@ -1,0 +1,247 @@
+---
+title: "AI-Augmented R Coding"
+subtitle: "A Hands-on Guide to Using GitHub Copilot with R"
+author: "Billy Quilty & Stefan Flasche"
+format:
+  revealjs:
+    theme: default
+    transition: slide
+    navigation: true
+    width: 1200
+    height: 800
+    margin: 0.1
+    scrollable: true
+    preview-links: auto
+    embed-resources: true
+---
+
+## Welcome
+
+::: {.fragment}
+**Prerequisites:** We will be using R, RStudio, VS Code + GitHub Copilot, so please ensure you have these installed and set up.
+:::
+
+---
+
+## Today's goal
+
+See how AI tools can speed up your R coding and help you focus on the science, not the syntax.
+
+---
+
+## Before we start
+
+- Install **R (≥4.0)**, **RStudio (≥2023.09)**, and **VS Code** on your laptop
+- Download the malaria dataset into the repo’s `data/` folder (already provided here)
+- Run `source("07_test_setup.R")` from `workshop_materials/` to confirm packages and files
+- Sign in to GitHub so Copilot can authenticate in both editors
+
+---
+
+## Example task
+
+We're going to look at some **malaria surveillance data** from the Epi R Handbook and carry out some basic exploratory data analysis.
+
+Download the data from here: 
+
+*EpiRHandbook.com*
+
+Navigate to "Download handbook and data" on the sidebar → scroll down to find the malaria count data → click to download → place the file in a sensible folder.
+
+---
+
+## Part 1: the familiar: manual coding
+
+Most of you are probably most familiar with RStudio, so let's open that and set our working directory to the folder where you placed the malaria data, load it in, and start exploring it.
+
+**Task:** try to load the data, explore it, and create some basic plots and summaries.
+
+**Take 10 minutes to do this yourself** - it's fine to look on Google or Stack Overflow (or even ChatGPT) for help.
+
+---
+
+## How did it go?
+
+- Writing code yourself is hard
+- May have had to look up syntax and error messages before getting it to work
+- This is how most people learn to code, through trial and error
+
+**This is essential for learning, but once you know what you want to do, there are faster ways.**
+
+---
+
+## Did you use ChatGPT in your browser to help?
+
+Why this may not be the best approach:
+
+- Copy and pasting between browser and RStudio is slow, clunky, and tedious
+- The model has little context awareness, so can't see the holistic view of the project
+- It's easy to lose track of where the model has made changes
+- It's difficult to revert changes if something goes wrong
+
+---
+
+## Part 2: Copilot in RStudio
+
+Now we're going to go into RStudio's settings and enable GitHub Copilot, then repeat the same task with AI autocomplete.
+
+Again, take 10 minutes to do this yourself, perhaps doing some more advanced analysis if you finish early.
+
+Some workflows to try: 
+
+- Start writing code → see suggestions → Press Tab to accept
+- Write a comment in plain text describing what you want → Copilot suggests code → Press Tab to accept
+  - e.g. `# Calculate reporting delays by district`
+
+---
+
+## Copilot: context-aware
+
+Works directly in RStudio. It's faster, makes fewer syntax errors, and you stay in control.
+
+---
+
+## Part 3: switching to VS Code
+
+So far we've been working in RStudio. Now let's switch to **VS Code** - a different code editor that has more advanced AI features.
+
+**Everyone:** please close RStudio and open VS Code now.
+
+Open the workshop folder in VS Code (File → Open Folder)
+
+---
+
+## Copilot chat in VS Code
+
+In VS Code, Copilot has an additional feature: **Copilot Chat** - you can have a full conversation with AI about your code.
+
+Let's try doing the same analysis we did before, but this time by chatting with AI instead of typing code.
+
+---
+
+## Let's try it: chat with AI
+
+**Task:** use Copilot chat to generate the same analysis
+
+1. Make sure you have VS Code open with the workshop folder
+2. Open Copilot chat (Ctrl/Cmd + I or click the chat icon in the sidebar)
+3. Create a new R script in VS Code (File → New File → R Script)
+4. In the chat, ask it something like: 
+  - *"Load the malaria data from ../data/malaria_facility_count_data.rds and create a plot showing weekly cases by district"*
+5. Review the code it generates
+6. Copy it into your R script and run it
+
+**Take 5 minutes to try this** - see if you can recreate your earlier plots.
+
+---
+
+## Going further: analysis plans
+
+Copilot chat is good for quick tasks. But what if we want to generate an entire analysis report with multiple sections?
+
+Lots of little chat prompts back and forth gets messy.
+
+Instead, write an analysis plan – one very specific prompt that contains all your requirements:
+
+- What data to use
+- What analyses to perform  
+- What plots to create
+- What the output should look like
+
+One clear prompt instead of many small ones. It's also reusable and version-controlled.
+
+---
+
+## Demo: I'll show you how it works
+
+I'll demonstrate using an analysis plan to generate a complete report.
+
+Watch as I:
+1. Show you my analysis plan file
+2. Ask Copilot chat to generate a report from it
+3. Review the generated code
+4. Render it to a final report
+
+Pay attention to how the analysis plan is structured – you'll be writing your own next.
+
+---
+
+## Your turn: write your own plan
+
+**Task:** create your own analysis plan and generate a report
+
+1. Create a new file called `my_analysis_plan.md` in VS Code
+2. Write a plan for an analysis you want to do with the malaria data
+  - What should it analyse? (e.g., trends by age group, geographic patterns)
+  - What plots do you want?
+  - What format should the output be?
+3. Ask Copilot chat: *"Generate a Quarto report following my_analysis_plan.md"*
+4. Review and render the generated report
+
+**Take 15 minutes** – be creative! Start simple, you can always add more.
+
+---
+
+## A word of caution
+
+These AI tools are very powerful, but **with great power comes great responsibility** *(Billy Quilty, 2025)*.
+
+**If you're new to R:** learn the fundamentals first before relying heavily on AI. You need to understand what the code is doing.
+
+**Always:**
+- Review the code AI generates
+- Check that statistical methods are appropriate
+- Verify results make sense for your data
+- Debug when things go wrong
+
+**Never:**
+- Blindly accept AI suggestions
+- Use methods you don't understand
+- Skip validation steps
+
+**Remember:** AI helps you code faster, but you're still responsible for the science.
+
+---
+
+## What we've covered today
+
+1. **Manual coding** – the foundation, essential for learning
+2. **Copilot autocomplete (RStudio)** – speeds up daily coding
+3. **Copilot chat (VS Code)** – quick tasks and incremental problem-solving
+4. **Analysis plans (VS Code)** – generate complete reports from one prompt
+
+Different tools for different tasks. Start with fundamentals, then add AI tools as you grow.
+
+---
+
+## Next steps
+
+**After today:**
+- Try these approaches on your own projects
+- If you're familiar with RStudio, give VS Code + Copilot a try for new analyses
+- But if you don't know R well yet, be careful to not let AI generate code you don't understand
+
+**Resources:**
+- GitHub Student Developer Pack: education.github.com/pack (free access)
+- Epi R Handbook: epirhandbook.com
+
+---
+
+## Questions?
+
+Any questions about:
+- Getting Copilot set up?
+- Which approach to use for your work?
+- How to run the setup checks?
+- How to write analysis plans?
+- Anything else?
+
+---
+
+## Thank you
+
+Thanks for participating. 
+
+Feel free to reach out if you have questions as you start using these tools.
+
+**Billy Quilty & Stefan Flasche**

@@ -1,0 +1,261 @@
+---
+title: "Malaria Data Analysis Report"
+subtitle: "A Comparative Analysis of Epidemiological Patterns"
+author: "Workshop Participant"
+date: "`r Sys.Date()`"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    code-tools: true
+    embed-resources: true
+    fig-width: 10
+    fig-height: 6
+    dpi: 300
+  pdf:
+    documentclass: article
+    geometry: margin=1in
+    fontsize: 11pt
+    toc: true
+    number-sections: true
+    fig-width: 6
+    fig-height: 4
+    dpi: 300
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center",
+  fig.width = 10,
+  fig.height = 6,
+  dpi = 300
+)
+
+# Load required libraries
+library(tidyverse)
+library(ggplot2)
+library(lubridate)
+library(scales)
+library(knitr)
+library(kableExtra)
+```
+
+# Abstract
+
+This report presents a comprehensive analysis of malaria surveillance data from the Epi R Handbook, examining patterns in case counts by age group, district-level variations, and reporting delays over the period May-August 2020. The analysis employs both traditional statistical methods and modern data visualization techniques to identify key epidemiological trends and inform malaria control programme decision-making.
+
+# Introduction
+
+Malaria remains a significant public health challenge in many regions worldwide. Understanding the temporal patterns of disease transmission, age-specific incidence, and surveillance system performance is crucial for developing effective control strategies. This analysis examines malaria surveillance data from four districts to identify common patterns and district-specific variations in disease burden and reporting quality.
+
+## Objectives
+
+The primary objectives of this analysis are to:
+
+1. Characterise the temporal patterns of malaria cases by age group and district
+2. Compare disease burden across districts using standardised metrics
+3. Examine age-specific incidence patterns over time
+4. Assess surveillance system performance through reporting delay analysis
+
+# Methods
+
+## Data Source
+
+The analysis utilises malaria surveillance data from the Epi R Handbook representing facility-level case counts from four districts over the period 16 May 2020 to 12 August 2020. The dataset includes:
+
+- Daily case counts by age group (0-4, 5-14, 15+ years)
+- Facility-level data from 65 health facilities
+- District identifiers (Spring, Bolo, Dingo, Barnard)
+- Data collection and submission dates
+- Facility identifiers
+
+## Data Processing
+
+Data processing involved several key steps:
+
+1. **Data cleaning**: Handling missing values and data quality assessment
+2. **Age group analysis**: Calculation of age-specific proportions and totals
+3. **Temporal aggregation**: Creation of weekly summaries by district
+4. **Reporting delay calculation**: Computation of days between data collection and submission
+
+## Statistical Analysis
+
+Statistical analyses included:
+
+- Descriptive statistics by district and time period
+- Trend analysis describing temporal patterns in reported cases
+- Peak period identification and comparison
+- Age-specific burden assessment across districts
+
+## Software and Tools
+
+Analysis was conducted using R version 4.3.0 with the following packages:
+- `tidyverse` for data manipulation
+- `ggplot2` for visualization
+- `lubridate` for date handling
+- `scales` for formatting
+
+# Results
+
+## Data Overview
+
+```{r data-overview}
+# Load and examine the dataset
+# Note: In the actual workshop, participants will load their processed data
+# This is a placeholder showing the expected structure
+
+# Create sample data structure for demonstration
+sample_data <- data.frame(
+  district = c("Spring", "Bolo", "Dingo", "Barnard"),
+  total_cases = c(34333, 32195, 24556, 13586),
+  total_0_4 = c(12351, 9411, 7546, 4579),
+  total_5_14 = c(7954, 6590, 6380, 3700),
+  total_15_plus = c(14028, 16194, 10630, 5307),
+  num_facilities = c(65, 65, 65, 65)
+)
+
+kable(sample_data, 
+      caption = "Summary of malaria cases by district and age group",
+      col.names = c("District", "Total Cases", "0-4 years", "5-14 years", "15+ years", "Facilities")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+## Temporal Patterns
+
+### Daily Case Trends
+
+```{r daily-cases, fig.cap="Weekly malaria cases by district, May-August 2020"}
+# Placeholder for actual plot code
+# Participants will generate this plot during the workshop
+
+# Create sample plot structure
+ggplot() +
+  labs(
+    title = "Weekly Malaria Cases by District",
+    subtitle = "May-August 2020",
+    x = "Date",
+    y = "Number of Cases",
+    caption = "Data source: Epi R Handbook Malaria Dataset"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  )
+```
+
+### Age Distribution
+
+```{r standardised-rates, fig.cap="Age group distribution of malaria cases over time"}
+# Placeholder for age group distribution plot
+# This will show age group proportions over time
+
+ggplot() +
+  labs(
+    title = "Age Group Distribution of Malaria Cases",
+    subtitle = "Proportion of cases by age group and district",
+    x = "Date",
+    y = "Proportion of Cases",
+    caption = "Data source: Epi R Handbook Malaria Dataset"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  )
+```
+
+## Reporting Delays
+
+```{r case-fatality, fig.cap="Reporting delay analysis by district"}
+# Placeholder for reporting delay plot
+# This will show surveillance system performance
+
+ggplot() +
+  labs(
+    title = "Average Reporting Delay by District",
+    subtitle = "Days between data collection and submission",
+    x = "Date",
+    y = "Average Reporting Delay (Days)",
+    caption = "Data source: Epi R Handbook Malaria Dataset"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold"),
+    plot.subtitle = element_text(size = 12)
+  )
+```
+
+## Peak Period Analysis
+
+```{r peak-analysis}
+# Placeholder for peak period analysis
+# This will identify and compare peak transmission periods
+
+peak_summary <- data.frame(
+  district = c("Spring", "Bolo", "Dingo", "Barnard"),
+  peak_week_cases = c(6380, 5605, 4522, 3300),
+  peak_week_0_4 = c(2249, 1502, 1299, 1200),
+  peak_week_5_14 = c(1575, 1022, 1250, 927),
+  peak_week_15_plus = c(2556, 3081, 1973, 1173)
+)
+
+kable(peak_summary,
+      caption = "Peak week characteristics by district",
+      col.names = c("District", "Peak Total Cases", "Peak 0-4 years", "Peak 5-14 years", "Peak 15+ years")) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+# Discussion
+
+## Key Findings
+
+Use this section to summarise the most important insights from your analysis. Highlight temporal trends, district-level contrasts, age-specific burdens, and reporting performance.
+
+## Implications for Public Health
+
+Discuss how the evidence could inform surveillance improvements, allocation of vector-control resources, or communication with district teams.
+
+## Limitations
+
+Outline data quality caveats, representativeness concerns, and any analytical shortcuts taken during the workshop.
+
+## Future Directions
+
+Propose ideas for deeper analysis (e.g., facility-level exploration, integration with climate indicators, longer time series) that participants could pursue after the session.
+
+# Conclusion
+
+Reinforce the main takeaways from the workshop exercise and connect them to participants’ own malaria surveillance work.
+
+# References
+
+1. World Health Organization. World Malaria Report 2020. Geneva: WHO; 2020.
+2. Applied Epi. The Epidemiologist R Handbook. Available at: https://www.epirhandbook.com/
+3. R Core Team. R: A language and environment for statistical computing. Vienna: R Foundation for Statistical Computing; 2021.
+
+# Appendix
+
+## R Session Information
+
+```{r session-info}
+sessionInfo()
+```
+
+## Code Repository
+
+The complete analysis code is available in the workshop materials, demonstrating three different approaches to data analysis:
+
+1. **Manual Coding**: Traditional R programming approach
+2. **Copilot-Assisted**: AI-enhanced coding with GitHub Copilot
+3. **AI Agent**: Advanced natural language programming with VS Code
+
+---
+
+*This report was generated as part of the AI-Augmented R Coding workshop, demonstrating the integration of artificial intelligence tools in epidemiological data analysis.*
