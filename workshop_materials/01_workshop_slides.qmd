@@ -13,6 +13,7 @@ format:
     scrollable: true
     preview-links: auto
     embed-resources: true
+    smaller: true
 ---
 
 ## Welcome
@@ -103,9 +104,12 @@ Some workflows to try:
 
 ---
 
-## Copilot: context-aware
+## Copilot in RStudio: reflections
 
-Works directly in RStudio. It's faster, makes fewer syntax errors, and you stay in control.
+- Integrated into your code editor
+- Less fussing over syntax
+- Can speed up routine tasks
+- But with new tools, we can go further...
 
 ---
 
@@ -123,7 +127,7 @@ Open the workshop folder in VS Code (File → Open Folder)
 
 In VS Code, Copilot has an additional feature: **Copilot Chat** - you can have a full conversation with AI about your code.
 
-These newer experiences also introduce **coding agents** that can iteratively run commands, execute tests, and adjust files until a specified goal is met. They are especially helpful for longer tasks like refactoring, wiring up data pipelines, or fixing stubborn bugs because they combine reasoning, editing, and validation in a single loop.
+This can be used as a **coding agent** that can iteratively run commands, execute tests, and adjust files until a specified goal is met. 
 
 Let's try doing the same analysis we did before, but this time by chatting with AI instead of typing code.
 
@@ -137,7 +141,7 @@ Let's try doing the same analysis we did before, but this time by chatting with 
 2. Open Copilot chat (Ctrl/Cmd + I or click the chat icon in the sidebar)
 3. Create a new R script in VS Code (File → New File → R Script)
 4. In the chat, ask it something like: 
-  - *"Load the malaria data from ../data/malaria_facility_count_data.rds and create a plot showing weekly cases by district"*
+  - *"Load the malaria data and create a plot showing weekly cases by district"*
 5. Review the code it generates
 6. Copy it into your R script and run it
 
@@ -147,7 +151,7 @@ Let's try doing the same analysis we did before, but this time by chatting with 
 
 ## Going further: analysis plans
 
-Copilot chat is good for quick tasks. But what if we want to generate an entire analysis report with multiple sections?
+Copilot chat is good for quick tasks. But what if we want to carry out an entire analysis with multiple sections?
 
 Lots of little chat prompts back and forth gets messy.
 
@@ -158,21 +162,11 @@ Instead, write an analysis plan – one very specific prompt that contains all y
 - What plots to create
 - What the output should look like
 
-One clear prompt instead of many small ones. It's also reusable and version-controlled.
-
 ---
 
-## Demo: I'll show you how it works
+## Demo
 
 I'll demonstrate using an analysis plan to generate a complete report.
-
-Watch as I:
-1. Show you my analysis plan file
-2. Ask Copilot chat to generate a report from it
-3. Review the generated code
-4. Render it to a final report
-
-Pay attention to how the analysis plan is structured – you'll be writing your own next.
 
 ---
 

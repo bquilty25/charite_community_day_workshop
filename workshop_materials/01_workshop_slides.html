@@ -1071,9 +1071,14 @@ Billy Quilty &amp; Stefan Flasche
 </ul></li>
 </ul>
 </section>
-<section id="copilot-context-aware" class="slide level2">
-<h2>Copilot: context-aware</h2>
-<p>Works directly in RStudio. It’s faster, makes fewer syntax errors, and you stay in control.</p>
+<section id="copilot-in-rstudio-reflections" class="slide level2">
+<h2>Copilot in RStudio: reflections</h2>
+<ul>
+<li>Integrated into your code editor</li>
+<li>Less fussing over syntax</li>
+<li>Can speed up routine tasks</li>
+<li>But with new tools, we can go further…</li>
+</ul>
 </section>
 <section id="part-3-switching-to-vs-code" class="slide level2">
 <h2>Part 3: switching to VS Code</h2>
@@ -1084,7 +1089,7 @@ Billy Quilty &amp; Stefan Flasche
 <section id="copilot-chat-in-vs-code" class="slide level2">
 <h2>Copilot chat in VS Code</h2>
 <p>In VS Code, Copilot has an additional feature: <strong>Copilot Chat</strong> - you can have a full conversation with AI about your code.</p>
-<p>These newer experiences also introduce <strong>coding agents</strong> that can iteratively run commands, execute tests, and adjust files until a specified goal is met. They are especially helpful for longer tasks like refactoring, wiring up data pipelines, or fixing stubborn bugs because they combine reasoning, editing, and validation in a single loop.</p>
+<p>This can be used as a <strong>coding agent</strong> that can iteratively run commands, execute tests, and adjust files until a specified goal is met.</p>
 <p>Let’s try doing the same analysis we did before, but this time by chatting with AI instead of typing code.</p>
 </section>
 <section id="lets-try-it-chat-with-ai" class="slide level2 scrollable">
@@ -1097,7 +1102,7 @@ Billy Quilty &amp; Stefan Flasche
 <li>In the chat, ask it something like:</li>
 </ol>
 <ul>
-<li><em>“Load the malaria data from ../data/malaria_facility_count_data.rds and create a plot showing weekly cases by district”</em></li>
+<li><em>“Load the malaria data and create a plot showing weekly cases by district”</em></li>
 </ul>
 <ol start="5" type="1">
 <li>Review the code it generates</li>
@@ -1107,7 +1112,7 @@ Billy Quilty &amp; Stefan Flasche
 </section>
 <section id="going-further-analysis-plans" class="slide level2">
 <h2>Going further: analysis plans</h2>
-<p>Copilot chat is good for quick tasks. But what if we want to generate an entire analysis report with multiple sections?</p>
+<p>Copilot chat is good for quick tasks. But what if we want to carry out an entire analysis with multiple sections?</p>
 <p>Lots of little chat prompts back and forth gets messy.</p>
 <p>Instead, write an analysis plan – one very specific prompt that contains all your requirements:</p>
 <ul>
@@ -1117,13 +1122,10 @@ Billy Quilty &amp; Stefan Flasche
 <li>What plots to create</li>
 <li>What the output should look like</li>
 </ul>
-<p>One clear prompt instead of many small ones. It’s also reusable and version-controlled.</p>
 </section>
-<section id="demo-ill-show-you-how-it-works" class="slide level2">
-<h2>Demo: I’ll show you how it works</h2>
+<section id="demo" class="slide level2">
+<h2>Demo</h2>
 <p>I’ll demonstrate using an analysis plan to generate a complete report.</p>
-<p>Watch as I: 1. Show you my analysis plan file 2. Ask Copilot chat to generate a report from it 3. Review the generated code 4. Render it to a final report</p>
-<p>Pay attention to how the analysis plan is structured – you’ll be writing your own next.</p>
 </section>
 <section id="your-turn-write-your-own-plan" class="slide level2 scrollable">
 <h2>Your turn: write your own plan</h2>
@@ -2170,7 +2172,7 @@ window.QuartoSupport = function () {
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,

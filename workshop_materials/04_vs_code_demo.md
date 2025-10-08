@@ -13,7 +13,7 @@ This section demonstrates the advanced AI agent capabilities in VS Code, showing
 
 ### Using the Analysis Specification
 
-The workshop includes a complete analysis specification in `06_analysis_spec.md` that defines:
+The workshop includes a complete analysis specification in `06_analysis_plan.md` that defines:
 - **Programming requirements**: R, tidyverse, style rules
 - **Data specifications**: Input files, variables, processing
 - **Analysis requirements**: Temporal trends, age distribution, reporting delays
@@ -24,11 +24,11 @@ The workshop includes a complete analysis specification in `06_analysis_spec.md`
 
 **In VS Code Copilot Chat, use this prompt:**
 ```
-I have a detailed specification in 06_analysis_spec.md. Please read it carefully 
+I have a detailed specification in 06_analysis_plan.md. Please read it carefully 
 and generate a complete Quarto report (.qmd) that follows ALL requirements. 
 
 The report should:
-1. Load malaria data from ../data/malaria_facility_count_data.rds
+1. Load malaria data from `here("data", "malaria_facility_count_data.rds")`
 2. Include an executive summary with key findings
 3. Perform temporal trend analysis by district
 4. Analyze age distribution across districts
@@ -60,7 +60,7 @@ For quicker iterations, you can also use direct prompts:
 
 ### Task 1: Data Loading and Exploration
 ```
-"Load the malaria dataset from ../data/malaria_facility_count_data.rds 
+"Load the malaria dataset using here(\"data\", \"malaria_facility_count_data.rds\") 
 and create a comprehensive data exploration summary"
 ```
 
@@ -70,7 +70,7 @@ and create a comprehensive data exploration summary"
 1. Weekly malaria cases by district with trend lines
 2. Stacked bar chart of age distribution by district
 3. Histogram of reporting delays
-Use tidyverse and save to ../images/"
+Use tidyverse and save to here(\"images\", ... )"
 ```
 
 ### Task 3: Statistical Analysis

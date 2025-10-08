@@ -57,7 +57,7 @@ This 80-minute hands-on workshop showcases the integration of GitHub Copilot int
 2. **Choose your coding mode**
    - `02_manual_analysis.R`: manual tidyverse workflow
    - `03_copilot_demo.R`: accept Copilot suggestions as you type
-   - `04_vs_code_demo.md` + `06_analysis_spec.md`: drive Copilot Chat with a detailed spec
+   - `04_vs_code_demo.md` + `06_analysis_plan.md`: drive Copilot Chat with a detailed spec
 
 3. **Create your report**
    - Open `05_final_report_template.qmd`
@@ -88,7 +88,7 @@ charite_community_day_workshop/
     ├── 05_final_report_template.qmd  # Report template
     ├── 05_final_report_template.html
     ├── 05_final_report_template.pdf
-    ├── 06_analysis_spec.md        # ⭐ Example specification for AI agents
+    ├── 06_analysis_plan.md        # ⭐ Example specification for AI agents
     ├── 07_test_setup.R            # Verify setup
     ├── 08_explore_malaria_data.R  # Data exploration
     ├── SLIDES_SPEC_CONTENT.md     # Content ideas for slides (reference)
@@ -104,7 +104,7 @@ charite_community_day_workshop/
 | `workshop_materials/03_copilot_demo.R` | Copilot-assisted coding exercise (with TODO prompts) |
 | `workshop_materials/04_vs_code_demo.md` | VS Code Copilot Chat guide |
 | `workshop_materials/05_final_report_template.qmd` | Quarto report template for final output |
-| `workshop_materials/06_analysis_spec.md` | ⭐ Specification file for analysis-plan driven development |
+| `workshop_materials/06_analysis_plan.md` | ⭐ Specification file for analysis-plan driven development |
 | `workshop_materials/07_test_setup.R` | Environment and dependency checks |
 | `workshop_materials/08_explore_malaria_data.R` | Data exploration helper script (can export a CSV copy) |
 
@@ -136,7 +136,7 @@ The workshop uses a real malaria surveillance dataset from the [Epi R Handbook](
 - **Geographic Coverage**: Multiple districts and health facilities
 - **Variables**: Case counts by age group (0-4, 5-14, 15+ years), reporting dates, facility information
 - **Use Cases**: Temporal trend analysis, geographic comparison, reporting delay analysis, age distribution patterns
-- **File location**: `../data/malaria_facility_count_data.rds` (relative to `workshop_materials/`)
+- **File location**: `here("data", "malaria_facility_count_data.rds")` (use the `here` package)
 
 ## Troubleshooting
 
@@ -155,7 +155,7 @@ The workshop uses a real malaria surveillance dataset from the [Epi R Handbook](
 
 - **Beginner**: Start with the manual script, then repeat using Copilot suggestions
 - **Intermediate**: Combine the Copilot demo with the analysis specification and chat prompts
-- **Advanced**: Extend `06_analysis_spec.md` or author new specs for your own datasets
+- **Advanced**: Extend `06_analysis_plan.md` or author new specs for your own datasets
 
 ## Example Copilot Prompts
 

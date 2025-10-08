@@ -47,15 +47,21 @@ summary(malaria_data)
 # Data transformation: Calculate age group proportions and rates
 malaria_data <- malaria_data %>%
     mutate(
-        # Calculate proportions by age group, guarding against zero totals
-        prop_0_4 = if_else(malaria_tot > 0, `malaria_rdt_0-4` / malaria_tot, 0),
-        prop_5_14 = if_else(malaria_tot > 0, `malaria_rdt_5-14` / malaria_tot, 0),
-        prop_15_plus = if_else(malaria_tot > 0, `malaria_rdt_15` / malaria_tot, 0),
+        # Calculate proportions by age group
+        prop_0_4 = `malaria_rdt_0-4` / malaria_tot,
+        prop_5_14 = `malaria_rdt_5-14` / malaria_tot,
+        prop_15_plus = `malaria_rdt_15` / malaria_tot,
         # Create week and month variables
         week = floor_date(data_date, "week"),
         month = floor_date(data_date, "month"),
         # Calculate reporting delay
         reporting_delay = as.numeric(submitted_date - data_date)
+    ) %>%
+    mutate(
+        across(
+            starts_with("prop_"),
+            ~ replace_na(replace(., !is.finite(.), NA_real_), 0)
+        )
     )
 
 # Create weekly aggregates by district for better visualisation
@@ -71,9 +77,15 @@ weekly_data <- malaria_data %>%
         .groups = "drop"
     ) %>%
     mutate(
-        prop_0_4 = if_else(total_cases > 0, total_0_4 / total_cases, 0),
-        prop_5_14 = if_else(total_cases > 0, total_5_14 / total_cases, 0),
-        prop_15_plus = if_else(total_cases > 0, total_15_plus / total_cases, 0)
+        prop_0_4 = total_0_4 / total_cases,
+        prop_5_14 = total_5_14 / total_cases,
+        prop_15_plus = total_15_plus / total_cases
+    ) %>%
+    mutate(
+        across(
+            starts_with("prop_"),
+            ~ replace_na(replace(., !is.finite(.), NA_real_), 0)
+        )
     )
 
 # Plot 1: Total malaria cases over time by district
@@ -165,9 +177,15 @@ district_summary <- malaria_data %>%
         .groups = "drop"
     ) %>%
     mutate(
-        prop_0_4 = if_else(total_cases > 0, total_0_4 / total_cases, 0),
-        prop_5_14 = if_else(total_cases > 0, total_5_14 / total_cases, 0),
-        prop_15_plus = if_else(total_cases > 0, total_15_plus / total_cases, 0)
+        prop_0_4 = total_0_4 / total_cases,
+        prop_5_14 = total_5_14 / total_cases,
+        prop_15_plus = total_15_plus / total_cases
+    ) %>%
+    mutate(
+        across(
+            starts_with("prop_"),
+            ~ replace_na(replace(., !is.finite(.), NA_real_), 0)
+        )
     )
 
 print("District summary statistics:")
