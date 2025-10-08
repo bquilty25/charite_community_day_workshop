@@ -13,9 +13,16 @@ for (pkg in required_packages) {
     }
 }
 
+if (!require(here, quietly = TRUE)) {
+    stop("The 'here' package is required for this script. Please install it with install.packages(\"here\").")
+}
+
 # Test 2: Check if data files exist
 cat("\nTesting data files...\n")
-data_files <- c("../data/malaria_facility_count_data.rds", "../data/malaria_data.csv")
+data_files <- c(
+    here::here("data", "malaria_facility_count_data.rds"),
+    here::here("data", "malaria_data.csv")
+)
 
 for (file in data_files) {
     if (file.exists(file)) {
@@ -29,7 +36,7 @@ for (file in data_files) {
 cat("\nTesting data loading...\n")
 tryCatch(
     {
-        malaria_data <- readRDS("../data/malaria_facility_count_data.rds")
+        malaria_data <- readRDS(data_files[1])
         cat("✓ Data loaded successfully\n")
         cat("  - Rows:", nrow(malaria_data), "\n")
         cat("  - Columns:", ncol(malaria_data), "\n")
@@ -45,8 +52,9 @@ tryCatch(
 # Test 4: Check if plots were generated
 cat("\nTesting plot files...\n")
 plot_files <- c(
-    "../images/malaria_cases_by_district.png", "../images/malaria_age_distribution.png",
-    "../images/malaria_reporting_delay.png"
+    here::here("images", "malaria_cases_by_district.png"),
+    here::here("images", "malaria_age_distribution.png"),
+    here::here("images", "malaria_reporting_delay.png")
 )
 
 for (file in plot_files) {
@@ -59,7 +67,10 @@ for (file in plot_files) {
 
 # Test 5: Check if HTML outputs were generated
 cat("\nTesting HTML outputs...\n")
-html_files <- c("01_workshop_slides.html", "05_final_report_template.html")
+html_files <- c(
+    here::here("workshop_materials", "01_workshop_slides.html"),
+    here::here("workshop_materials", "05_final_report_template.html")
+)
 
 for (file in html_files) {
     if (file.exists(file)) {
@@ -73,7 +84,7 @@ for (file in html_files) {
 cat("\nTesting data analysis...\n")
 tryCatch(
     {
-        malaria_data <- readRDS("../data/malaria_facility_count_data.rds")
+        malaria_data <- readRDS(data_files[1])
 
         # Test basic calculations
         total_cases <- sum(malaria_data$malaria_tot, na.rm = TRUE)

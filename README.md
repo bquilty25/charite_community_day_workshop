@@ -70,7 +70,6 @@ This 80-minute hands-on workshop showcases the integration of GitHub Copilot int
 charite_community_day_workshop/
 ├── README.md                      # This file
 ├── data/                          # Datasets
-│   ├── malaria_data.csv
 │   └── malaria_facility_count_data.rds
 ├── docs/                          # Planning documents
 │   ├── brief.md
@@ -107,7 +106,7 @@ charite_community_day_workshop/
 | `workshop_materials/05_final_report_template.qmd` | Quarto report template for final output |
 | `workshop_materials/06_analysis_spec.md` | ⭐ Specification file for analysis-plan driven development |
 | `workshop_materials/07_test_setup.R` | Environment and dependency checks |
-| `workshop_materials/08_explore_malaria_data.R` | Data exploration helper script |
+| `workshop_materials/08_explore_malaria_data.R` | Data exploration helper script (can export a CSV copy) |
 
 ## Workshop Goals
 

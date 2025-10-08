@@ -29,6 +29,14 @@ See how AI tools can speed up your R coding and help you focus on the science, n
 
 ---
 
+## Before we dive into R
+
+- This workshop is about how AI can accelerate your workflow, not an exam on R syntax
+- Copilot and Copilot Chat will help translate plain-language ideas into tidyverse code
+- If your R skills feel rusty, that's okay—lean on the AI and stay curious about the code it generates
+
+---
+
 ## Before we start
 
 - Install **R (≥4.0)**, **RStudio (≥2023.09)**, and **VS Code** on your laptop
@@ -52,7 +60,7 @@ Navigate to "Download handbook and data" on the sidebar → scroll down to find 
 
 ## Part 1: the familiar: manual coding
 
-Most of you are probably most familiar with RStudio, so let's open that and set our working directory to the folder where you placed the malaria data, load it in, and start exploring it.
+Most of you are probably most familiar with RStudio, so let's open that, set our working directory to the folder where you placed the malaria data, load it in, and start exploring it.
 
 **Task:** try to load the data, explore it, and create some basic plots and summaries.
 

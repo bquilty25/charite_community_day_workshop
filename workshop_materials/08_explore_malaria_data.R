@@ -7,9 +7,11 @@ library(tidyverse)
 library(ggplot2)
 library(lubridate)
 library(scales)
+library(here)
 
 # Load the malaria dataset
-malaria_data <- readRDS("../data/malaria_facility_count_data.rds")
+data_path <- here("data", "malaria_facility_count_data.rds")
+malaria_data <- readRDS(data_path)
 
 # Explore the dataset structure
 cat("=== MALARIA DATASET EXPLORATION ===\n")
@@ -50,5 +52,6 @@ cat("\n=== EXPLORATION COMPLETE ===\n")
 cat("Malaria dataset successfully loaded and explored!\n")
 
 # Save the dataset as CSV for easier access
-write.csv(malaria_data, "../data/malaria_data.csv", row.names = FALSE)
-cat("Dataset also saved as ../data/malaria_data.csv for easier access\n")
+csv_path <- here("data", "malaria_data.csv")
+write.csv(malaria_data, csv_path, row.names = FALSE)
+cat("Dataset also saved as", csv_path, "for easier access\n")

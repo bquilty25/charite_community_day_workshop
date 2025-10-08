@@ -7,18 +7,28 @@ library(tidyverse)
 library(ggplot2)
 library(lubridate)
 library(scales)
+library(here)
 
 # Load the malaria dataset from Epi R Handbook
+# Resolve data and image locations via here()
+data_path <- here("data", "malaria_facility_count_data.rds")
+image_dir <- here("images")
+
 # Download the dataset if it doesn't exist
-if (!file.exists("../data/malaria_facility_count_data.rds")) {
+if (!file.exists(data_path)) {
     download.file(
         "https://github.com/appliedepi/epirhandbook_eng/raw/master/data/malaria_facility_count_data.rds",
-        "../data/malaria_facility_count_data.rds"
+        data_path,
+        quiet = TRUE
     )
 }
 
+if (!dir.exists(image_dir)) {
+    dir.create(image_dir, recursive = TRUE)
+}
+
 # Load the malaria dataset
-malaria_data <- readRDS("../data/malaria_facility_count_data.rds") %>%
+malaria_data <- readRDS(data_path) %>%
     mutate(
         data_date = as.Date(data_date),
         submitted_date = as.Date(submitted_date)
@@ -37,10 +47,10 @@ summary(malaria_data)
 # Data transformation: Calculate age group proportions and rates
 malaria_data <- malaria_data %>%
     mutate(
-        # Calculate proportions by age group
-        prop_0_4 = `malaria_rdt_0-4` / malaria_tot,
-        prop_5_14 = `malaria_rdt_5-14` / malaria_tot,
-        prop_15_plus = `malaria_rdt_15` / malaria_tot,
+        # Calculate proportions by age group, guarding against zero totals
+        prop_0_4 = if_else(malaria_tot > 0, `malaria_rdt_0-4` / malaria_tot, 0),
+        prop_5_14 = if_else(malaria_tot > 0, `malaria_rdt_5-14` / malaria_tot, 0),
+        prop_15_plus = if_else(malaria_tot > 0, `malaria_rdt_15` / malaria_tot, 0),
         # Create week and month variables
         week = floor_date(data_date, "week"),
         month = floor_date(data_date, "month"),
@@ -61,14 +71,14 @@ weekly_data <- malaria_data %>%
         .groups = "drop"
     ) %>%
     mutate(
-        prop_0_4 = total_0_4 / total_cases,
-        prop_5_14 = total_5_14 / total_cases,
-        prop_15_plus = total_15_plus / total_cases
+        prop_0_4 = if_else(total_cases > 0, total_0_4 / total_cases, 0),
+        prop_5_14 = if_else(total_cases > 0, total_5_14 / total_cases, 0),
+        prop_15_plus = if_else(total_cases > 0, total_15_plus / total_cases, 0)
     )
 
 # Plot 1: Total malaria cases over time by district
 p1 <- ggplot(weekly_data, aes(x = week, y = total_cases, colour = District)) +
-    geom_line(size = 0.8) +
+    geom_line(linewidth = 0.8) +
     labs(
         title = "Weekly Malaria Cases by District",
         subtitle = "May-August 2020",
@@ -121,7 +131,7 @@ print(p2)
 
 # Plot 3: Reporting delay by district
 p3 <- ggplot(weekly_data, aes(x = week, y = avg_reporting_delay, colour = District)) +
-    geom_line(size = 0.8) +
+    geom_line(linewidth = 0.8) +
     labs(
         title = "Average Reporting Delay by District",
         subtitle = "Days between data collection and submission",
@@ -155,9 +165,9 @@ district_summary <- malaria_data %>%
         .groups = "drop"
     ) %>%
     mutate(
-        prop_0_4 = total_0_4 / total_cases,
-        prop_5_14 = total_5_14 / total_cases,
-        prop_15_plus = total_15_plus / total_cases
+        prop_0_4 = if_else(total_cases > 0, total_0_4 / total_cases, 0),
+        prop_5_14 = if_else(total_cases > 0, total_5_14 / total_cases, 0),
+        prop_15_plus = if_else(total_cases > 0, total_15_plus / total_cases, 0)
     )
 
 print("District summary statistics:")
@@ -190,8 +200,8 @@ print("Peak weeks by district:")
 print(peak_weeks)
 
 # Save plots
-ggsave("../images/malaria_cases_by_district.png", p1, width = 10, height = 6, dpi = 300)
-ggsave("../images/malaria_age_distribution.png", p2, width = 12, height = 8, dpi = 300)
-ggsave("../images/malaria_reporting_delay.png", p3, width = 10, height = 6, dpi = 300)
+ggsave(here("images", "malaria_cases_by_district.png"), p1, width = 10, height = 6, dpi = 300)
+ggsave(here("images", "malaria_age_distribution.png"), p2, width = 12, height = 8, dpi = 300)
+ggsave(here("images", "malaria_reporting_delay.png"), p3, width = 10, height = 6, dpi = 300)
 
-print("Analysis complete! Plots saved to ../images/ directory.")
+cat("Analysis complete! Plots saved to", image_dir, "\n")

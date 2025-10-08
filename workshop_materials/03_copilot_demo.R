@@ -10,9 +10,11 @@ library(tidyverse)
 library(ggplot2)
 library(lubridate)
 library(scales)
+library(here)
 
 # Load the malaria dataset
 # TODO: Load the malaria dataset from Epi R Handbook
+# Hint: data_path <- here("data", "malaria_facility_count_data.rds")
 
 # Data exploration
 # TODO: Explore the structure of the malaria dataset

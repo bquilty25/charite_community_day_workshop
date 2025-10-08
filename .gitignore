@@ -26,3 +26,5 @@ _book/
 
 docs/brief.md
 docs/materials_plan.md
+data/malaria_facility_count_data.rds
+.gitignore
