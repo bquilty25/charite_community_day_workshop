@@ -115,6 +115,8 @@ Open the workshop folder in VS Code (File → Open Folder)
 
 In VS Code, Copilot has an additional feature: **Copilot Chat** - you can have a full conversation with AI about your code.
 
+These newer experiences also introduce **coding agents** that can iteratively run commands, execute tests, and adjust files until a specified goal is met. They are especially helpful for longer tasks like refactoring, wiring up data pipelines, or fixing stubborn bugs because they combine reasoning, editing, and validation in a single loop.
+
 Let's try doing the same analysis we did before, but this time by chatting with AI instead of typing code.
 
 ---
@@ -224,6 +226,18 @@ Different tools for different tasks. Start with fundamentals, then add AI tools 
 **Resources:**
 - GitHub Student Developer Pack: education.github.com/pack (free access)
 - Epi R Handbook: epirhandbook.com
+
+---
+
+## Other AI coding assistants
+
+Prefer something other than Copilot? There are lots of rapidly evolving options:
+
+- **Cursor**, **Gemini**, **Claude Code**, and **Windsurf** – proprietary assistants with fast-moving feature sets
+- **RooCode** and **cline** – open-source projects you can self-host or extend (community contributions land quickly)
+- Many of these tools integrate with VS Code or the browser, so you can experiment and see what fits your workflow best
+
+All of them are improving constantly, so revisit them from time to time to see what new capabilities they offer.
 
 ---
 
